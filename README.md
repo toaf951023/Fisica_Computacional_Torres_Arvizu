@@ -1,0 +1,2 @@
+# Fisica_Computacional_Torres_Arvizu
+Tareas de Francisco_Ricardo_Torres_Arvizu
