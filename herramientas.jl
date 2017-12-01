@@ -1,5 +1,6 @@
 __precompile__()
 module herramientas
+using SymPy
 export espaaciofaserungeKutta2e
 """Esta funcion sirve para resover númericamente ecuaciones diferenciales por el método de Runge-Kutta, ya sean sistemas o de cualquier orden orden. 
 La función recibecomo argumentos (f,t0,t,y0,delta) una función (f),los puntos incial y final del intervalo [t0,tf], las condiciones inciales (y0), y el tamaño de paso (delta). 
@@ -115,13 +116,13 @@ function trapecio(a,b, f::Function,n::Int64)
     Sf=S*(b-a)/2n
     return Sf
 end 
-Pkg.add("SymPy")
-using SymPy
-A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
+
+
+
 export dif
 """ Esta función te permite obtener una derivada simbólica respecto a la variable x"""
 function dif(f::Function)
-
+A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
  
     df= diff(f(x),x)
 
@@ -130,7 +131,7 @@ end
 export dif2
 """ Esta función te permite obtener una derivada simbólica respecto a la variable xpara el método de Euler implítcito"""
 function dif2(f::Function)
-
+A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
  
     df= diff(f(x1),x1)
 
@@ -140,7 +141,8 @@ export newton1
 """ Esta función aplica el método de Newton si se da una condición inicial."""
 
 function newton1(f,w0) #se crea una funcion que tome los parametros que reuiera la ecuacion par solucionarse  
-    w1=w0
+   A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")  
+   w1=w0
     d=herramientas.dif(f)
     df=lambdify( d,[x]);
     w2=0.0
@@ -214,7 +216,7 @@ function eulerFunctionimplicita(f,time0,timef,y0,delta)
     #Se declaran dos arreglos a los cuales iremos agregando los valores calculados de t y y
     yarreglo=[]
     tarreglo=[]
-    
+    A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
     push!(tarreglo,time0)
     push!(yarreglo,y0)
   
