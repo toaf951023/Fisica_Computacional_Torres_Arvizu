@@ -193,7 +193,8 @@ end
 export newton3
 """Método de Newton especial para el método de Euler implícito."""
 function newton3(f::Function,w0) #se crea una funcion que tome los parametros que reuiera la ecuacion par solucionarse  
-    w1=w0
+   A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
+   w1=w0
     d=dif(f)
     df=lambdify( d,[x1]);
     w2=0.0
@@ -233,6 +234,7 @@ end
 export newton2
 """ Esta función aplica el método de Newton si se da un arreglo inicial."""
 function newton2(f,  w0) #se crea una funcion que tome los parametros que reuiera la ecuacion par solucionarse
+  A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
    n=length(w0)
    raices=[]
     y=zeros(1,n)
@@ -259,6 +261,7 @@ export  newtongneral
 """ Esta función aplica el método de Newton si se da un arreglo inicial o punto. Requiere como argumentos (f,w0) que son la función (f) y la condición incial (w0) como entradas (f,w0). En casp"""
 function newtongneral(f::Function,  w0)
    solucion=0.0
+   A,x,a,n,m,xi,x1=symbols("A,x,a,n,m,xi,x1")
     if ndims(w0)==0
         solucion=herramientas.newton1(f,w0)
     else
